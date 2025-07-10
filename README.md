@@ -9,29 +9,23 @@ The proposed approach performs segmentation of acute ischemic stroke lesions (<6
 
 **Attention U-Net Architecture**:
 
-U-Net backbone enhanced with attention gates in skip connections to focus on relevant lesion regions
-
-Combines local and global contextual information for precise segmentation
-
-Outputs probability maps of lesion locations
+*U-Net backbone enhanced with attention gates in skip connections to focus on relevant lesion regions
+*Combines local and global contextual information for precise segmentation
+*Outputs probability maps of lesion locations
 
 **Key Features:**
 
-Optimized for acute phase DWI images (0-6 hours post-stroke)
-
-Validated on follow-up scans (48 hours post-infarction)
-
-Includes comprehensive postprocessing with optimal thresholding (0.90)
+*Optimized for acute phase DWI images (0-6 hours post-stroke)
+*Validated on follow-up scans (48 hours post-infarction)
+*Includes comprehensive postprocessing with optimal thresholding (0.90)
 
 ---
 The model was trained using 5-fold cross-validation on data from 55 patients and evaluated with standard segmentation metrics:
 
--Dice Similarity Coefficient (DSC)
++Dice Similarity Coefficient (DSC)
++Binary Cross-Entropy (BCE) Loss
++Precision, Recall, F1-Score
++Jaccard Index
++Hausdorff Distance
 
--Binary Cross-Entropy (BCE) Loss
-
--Precision, Recall, F1-Score
-
--Jaccard Index
-
--Hausdorff Distance
+**For final test performance and reproducibility, refer to the manuscript results section.**
