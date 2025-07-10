@@ -8,8 +8,15 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Funciones para leer archivos del Dataset
+def volumen(archivo, info_dim):
+    tamaño = tuple(info_dim["size"][:3])  
+    tipo_dato = info_dim["dtype"]
+    with open(archivo, "rb") as f:
+        volumen = np.fromfile(f, dtype=tipo_dato).reshape(tamaño, order='F')  
+    return volumen
+    
 def guardar_slices(volumen, carpeta_salida, id_paciente):
-    os.makedirs(carpeta_salida, exist_ok=True)  # Crea la carpeta si no existe
+    os.makedirs(carpeta_salida, exist_ok=True)  
 
     for i in range(volumen.shape[2]):  # Iterar sobre slices
         nombre_salida = os.path.join(carpeta_salida, f"{id_paciente}_{i:03d}.png")
@@ -24,8 +31,10 @@ def procesar_paciente(ruta_paciente):
             os.path.exists(archivo_dim_mask) and os.path.exists(archivo_ima_mask)):
         print(f" Archivos faltantes en {ruta_paciente}, omitiendo...")
         return
-    volumen_mask = (volumen_mask > 0).astype(np.uint8)
-
+                
+    volumen_mri = leer_volumen(archivo_mri, info_mri)
+    volumen_mask = leer_volumen(archivo_mask, info_mask)
+    
     # Guardar slices
     guardar_slices(volumen_mri, carpeta_input, id_paciente)
     guardar_slices(volumen_mask, carpeta_mask, id_paciente)
