@@ -81,7 +81,6 @@ def augment_and_save(img, mask, base_name, aug_id):
     img.save(os.path.join(output_img_dir, f"{base_name}_aug{aug_id}.png"))
     mask.save(os.path.join(output_mask_dir, f"{base_name}_aug{aug_id}.png"))
 
-# Proceso de aumento
 for filename in sorted(os.listdir(input_dir)):
     if filename.endswith(".png"):
         base_name = os.path.splitext(filename)[0]
