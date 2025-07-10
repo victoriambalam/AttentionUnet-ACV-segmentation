@@ -22,10 +22,10 @@ The proposed approach performs segmentation of acute ischemic stroke lesions (<6
 ---
 The model was trained using 5-fold cross-validation on data from 55 patients and evaluated with standard segmentation metrics:
 
-° Dice Similarity Coefficient (DSC)
-° Binary Cross-Entropy (BCE) Loss
-° Precision, Recall, F1-Score
-° Jaccard Index
-° Hausdorff Distance
++ Dice Similarity Coefficient (DSC)
++ Binary Cross-Entropy (BCE) Loss
++ Precision, Recall, F1-Score
++ Jaccard Index
++ Hausdorff Distance
 
 **For final test performance and reproducibility, refer to the manuscript results section.**
